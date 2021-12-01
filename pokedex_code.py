@@ -5,6 +5,8 @@ import cv2
 import os
 import numpy as np
 import imutils
+import matplotlib.pyplot as plt
+
 
 X = []
 y = []
@@ -62,6 +64,7 @@ y_pred = classifier.predict(X_test)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test,y_pred)
+print("Confusion matrix: \n", cm)
     
 # Your Pokedex is ready! Feed it a picture of any Pokemon and the Pokedex will identify it
 labels = ["Eevee","Gengar","Jigglypuff","Pikachu","Squirtle"]
@@ -73,7 +76,42 @@ index = int(classifier.predict(I_pca))
 s = "Its an "+labels[index]+"!"
 
 im1 = cv2.cvtColor(im,cv2.COLOR_BGR2RGB) #matplotlib loads pictures as RGB
-import matplotlib.pyplot as plt
+imgplot = plt.imshow(im1)
+plt.title(s)
+plt.show()
+
+im = cv2.imread("normalpika.png")
+new_im = changeimg(im)
+I = np.array([new_im]).reshape(1,-1)
+I_pca = pca.transform(I)
+index = int(classifier.predict(I_pca))
+s = "Its an "+labels[index]+"!"
+
+im1 = cv2.cvtColor(im,cv2.COLOR_BGR2RGB) #matplotlib loads pictures as RGB
+imgplot = plt.imshow(im1)
+plt.title(s)
+plt.show()
+
+im = cv2.imread("3dpika.jpg")
+new_im = changeimg(im)
+I = np.array([new_im]).reshape(1,-1)
+I_pca = pca.transform(I)
+index = int(classifier.predict(I_pca))
+s = "Its an "+labels[index]+"!"
+
+im1 = cv2.cvtColor(im,cv2.COLOR_BGR2RGB) #matplotlib loads pictures as RGB
+imgplot = plt.imshow(im1)
+plt.title(s)
+plt.show()
+
+im = cv2.imread("Pokepika.jpg")
+new_im = changeimg(im)
+I = np.array([new_im]).reshape(1,-1)
+I_pca = pca.transform(I)
+index = int(classifier.predict(I_pca))
+s = "Its an "+labels[index]+"!"
+
+im1 = cv2.cvtColor(im,cv2.COLOR_BGR2RGB) #matplotlib loads pictures as RGB
 imgplot = plt.imshow(im1)
 plt.title(s)
 plt.show()
