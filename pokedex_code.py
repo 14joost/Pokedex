@@ -109,7 +109,7 @@ new_im = changeimg(im)
 I = np.array([new_im]).reshape(1,-1)
 I_pca = pca.transform(I)
 index = int(classifier.predict(I_pca))
-s = "Its an "+labels[index]+"!"
+s = "Its a "+labels[index]+"!"
 
 im1 = cv2.cvtColor(im,cv2.COLOR_BGR2RGB) #matplotlib loads pictures as RGB
 imgplot = plt.imshow(im1)
